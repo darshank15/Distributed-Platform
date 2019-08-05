@@ -1,0 +1,9 @@
+sudo -S apt-get update
+sudo -S apt-get install -y python3-pip
+pip3 install flask
+pip3 install flask_restful
+pip3 install flask-mysql
+pip3 install requests
+pip3 install Logger
+pip3 install kombu
+pip3 install psutil

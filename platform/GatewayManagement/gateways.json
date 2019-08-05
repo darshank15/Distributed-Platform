@@ -1,0 +1,49 @@
+{
+    "gateways":[
+        {
+            "GatewayName":"Submarine Gateway1",
+            "GatewayLocation":"Vishakapatnam",
+            "GatewayIP":"10.42.0.1",
+            "Sensors":[
+                {
+                    "SensorID":"Sensor1",
+                    "SensorName":"HoneyWellSenor",
+                    "SensorType":"Distance",
+                    "SensorQueue":"Sensor1Queue",
+                    "SensorStreamRate":1
+                    
+                },
+                {
+                    "SensorID":"Sensor2",
+                    "SensorStreamRate":1,
+                    "SensorName":"HoneyWellSenor",
+                    "SensorType":"Iris",
+                    "SensorQueue":"Sensor2Queue"                    
+                }
+            ]
+        },
+        {
+            "GatewayName":"Submarine Gateway2",
+            "GatewayLocation":"Vishakapatnam",
+            "GatewayIP":"10.42.0.239",
+            "Sensors":[
+                {
+                    "SensorID":"Sensor1",
+                    "SensorStreamRate":1,
+                    "SensorName":"LogitechSensor",
+                    "SensorType":"Camera",
+                    "SensorQueue":"Sensor1Queue"
+                    
+                },
+                {
+                    "SensorID":"Sensor2",
+                    "SensorStreamRate":1,
+                    "SensorName":"SamsungSensor",
+                    "SensorType":"Video",
+                    "SensorQueue":"Sensor2Queue"
+                    
+                }
+            ]
+        }
+    ]
+}

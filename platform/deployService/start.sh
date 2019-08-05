@@ -1,0 +1,2 @@
+echo $4 | sudo -S docker load < deploydocker.tar
+echo $4 | sudo -S docker run -t --net=host -v ~/nfs/:/deploy_service/nfs/ -v /etc/localtime:/etc/localtime:ro deploydocker python3 deploy_service.py $1 $2 $3 $4

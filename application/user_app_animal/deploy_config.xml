@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	
+<main>
+<sensors>
+	<sensor>
+		<sensorType>CAMERA</sensorType>
+		<sensorLocation>Vizag</sensorLocation>
+	</sensor>
+</sensors>
+
+<gateways>
+	<gateway>
+		<name>railwayCrossing1</name>
+		<gatewayIP>192.168.43.149</gatewayIP>
+		<gatewayLocation>Girnar</gatewayLocation>
+		<gatewayUname>priyendu</gatewayUname>
+		<gatewayPassword>dontmesswithme</gatewayPassword>
+		<dependencies>
+			<sensor-dependency>
+				<sensor-type>CAMERA</sensor-type>
+			</sensor-dependency>
+		</dependencies>
+	</gateway>
+	<gateway>
+		<name>railwayCrossing2</name>
+		<gatewayIP>192.168.43.115</gatewayIP>
+		<gatewayLocation>Amazon</gatewayLocation>
+		<gatewayUname>rushit</gatewayUname>
+		<gatewayPassword>jasani123</gatewayPassword>
+		<dependencies>
+			<sensor-dependency>
+				<sensor-type>CAMERA</sensor-type>
+			</sensor-dependency>
+		</dependencies>
+	</gateway>
+</gateways>
+
+<models>
+	<model>
+		<modelName>animalWelfare</modelName>
+		<predURLStructure>v1/models/animalWelfare</predURLStructure>
+		<fileName>saved_model.pb</fileName>
+		<type>shared</type>
+		<dependencies>
+			<sensor-type>CAMERA</sensor-type>
+		</dependencies>
+	</model>
+</models>
+
+<services>
+	<service>
+		<serviceName>alarmService</serviceName>
+		<startUPFile>alarmService.py</startUPFile>
+		<type>shared</type>
+		<dependencies>
+			<sensor-dependency>
+				<sensor-type>CAMERA</sensor-type>
+			</sensor-dependency>
+		</dependencies>
+	</service>
+	<service>
+		<serviceName>faunaCounterService</serviceName>
+		<startUPFile>faunaCounterService.py</startUPFile>
+		<type>shared</type>
+		<dependencies>
+			<sensor-dependency>
+				<sensor-type>CAMERA</sensor-type>
+			</sensor-dependency>
+		</dependencies>
+	</service>
+</services>
+</main>

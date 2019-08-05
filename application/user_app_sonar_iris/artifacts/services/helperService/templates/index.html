@@ -1,0 +1,44 @@
+ <!DOCTYPE html>
+<html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+</head>
+
+<body>
+	<span>Hello</span>
+	  <div id="myDiv"></div>
+	  <script>
+	  	var list1 = ["abc","xyz","yyy"]
+	  	var list2 = [2,4,5]
+	  	 $.get("/get_helper_data", function(data, status){
+	  	 	console.log(JSON.parse(data)["labels"]);
+	  	 	data = JSON.parse(data)
+	  	 	var trace1 = {
+		    type: 'bar',
+		    x: data["labels"],
+		    y: data["values"],
+		    marker: {
+		        color: '#C8A2C8',
+		        line: {
+		            width: 2.5
+		        }
+		    }
+		};
+
+		var data = [ trace1 ];
+
+		var layout = { 
+		  title: 'Responsive to window\'s size!',
+		  font: {size: 18}
+		};
+
+		Plotly.newPlot('myDiv', data, layout, {responsive: true});
+    		});
+	  	
+
+	    
+	  </script>
+</body>
+</html> 

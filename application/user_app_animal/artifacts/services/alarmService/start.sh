@@ -1,0 +1,1 @@
+python3 alarmService.py $1 $2

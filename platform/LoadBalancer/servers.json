@@ -1,0 +1,142 @@
+{
+	"servers": [
+		{
+			"serverIP": "192.168.43.149",
+			"username": "priyendu",
+			"password": "dontmesswithme",
+			"isExclusive": "False",
+			"location": "Gateway"
+		},
+		{
+			"serverIP": "10.42.0.46",
+			"username": "priyendu",
+			"password": "dontmesswithme",
+			"isExclusive": "False",
+			"location": "Gateway"
+		},
+		{
+			"serverIP": "192.168.43.48",
+			"username": "rajesh",
+			"password": "tanushree1",
+			"isExclusive": "False",
+			"location": "Cloud"
+
+		},
+		{
+			"serverIP": "10.2.133.126",
+			"username": "bhavin",
+			"password": "bkotak@A1",
+			"isExclusive": "False",
+			"location": "Cloud"
+
+		},
+		{
+			"serverIP": "10.42.0.239",
+			"username": "bhavin",
+			"password": "bkotak07",
+			"isExclusive": "False",
+			"location": "Cloud"
+
+		},
+		{
+			"serverIP": "10.42.0.238",
+			"username": "vatsal",
+			"password": "vatsal_laptop",
+			"isExclusive": "False",
+			"location": "Cloud"
+
+		},
+		{
+			"serverIP": "192.168.43.54",
+			"username": "bhavin",
+			"password": "bkotak",
+			"isExclusive": "False",
+			"location": "Cloud"
+		},
+		{
+			"serverIP": "192.168.1.13",
+			"username": "dhawal",
+			"password": "dhawal@A1",
+			"isExclusive": "False",
+			"location": "Cloud"
+		},
+		{
+			"serverIP": "192.168.43.115",
+			"username": "rushit",
+			"password": "jasani123",
+			"isExclusive": "False",
+			"location": "Cloud"
+		},
+		{
+			"serverIP": "10.42.0.85",
+			"username": "rushit",
+			"password": "jasani123",
+			"isExclusive": "False",
+			"location": "Cloud"
+		},
+		{
+			"serverIP": "10.3.12.117",
+			"username": "dhawal",
+			"password": "dhawal@A1",
+			"isExclusive": "False",
+			"location": "Cloud"
+		},
+		{
+			"serverIP": "10.1.38.191",
+			"username": "dhawal",
+			"password": "dhawal@A1",
+			"isExclusive": "False",
+			"location": "Cloud"
+		},
+		{
+			"serverIP": "10.1.37.49",
+			"username": "dhawal",
+			"password": "dhawal@A1",
+			"isExclusive": "False",
+			"location": "Cloud"
+		},
+		{
+			"serverIP": "192.168.1.14",
+			"username": "dhawal",
+			"password": "dhawal@A1",
+			"isExclusive": "False",
+			"location": "Cloud"
+		},
+		{
+			"serverIP": "192.168.1.12",
+			"username": "dhawal",
+			"password": "dhawal@A1",
+			"isExclusive": "False",
+			"location": "Cloud"
+		},
+		{
+			"serverIP": "192.168.43.125",
+			"username": "vatsal",
+			"password": "vatsal_laptop",
+			"isExclusive": "False",
+			"location": "Cloud"
+		},
+		{
+			"serverIP": "192.168.43.110",
+			"username": "dhawal",
+			"password": "dhawal@A1",
+			"isExclusive": "True",
+			"location": "Cloud"
+		},
+		{
+			"serverIP": "192.168.43.2",
+			"username": "darshan",
+			"password": "qwert123",
+			"isExclusive": "True",
+			"location": "Cloud"
+		},
+		
+		{
+			"serverIP": "10.1.37.63",
+			"username": "bhavin",
+			"password": "bhavin@A1",
+			"isExclusive": "False",
+			"location": "Cloud"
+		}
+	]
+}

@@ -1,0 +1,44 @@
+ <!DOCTYPE html>
+<html>
+
+
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+  	function reloadp()
+  	{
+	  	 var data
+	  	 // alert("aaa")
+	  	 $.get("/get_mine_data", function(data, status){
+	  	 	// alert(data)
+	  	 	data = JSON.parse(data)
+	  	 	if (data["message"]=="Mine")
+	  	 	{
+	  	 		// alert("ddd")
+	  	 		$("#countId").text(data["message"])
+	  	 		$("#countId").css('color','red')
+	  	 	}
+	  	 	else
+	  	 	{
+	  	 		$("#countId").text(data["message"])
+	  	 		$("#countId").css('color','blue')
+	  	 	}
+	  	 	
+		});
+	}
+	   window.onload=reloadp
+</script>
+
+
+</head>
+
+<body>
+	<!-- <h1>dd</h1> -->
+	  <div id="myDiv">
+	  	<h1>Message: </h1>
+	  	<h1 id="countId"></h1>
+	  </div>
+	  
+</body>
+</html> 

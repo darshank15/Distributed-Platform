@@ -1,0 +1,83 @@
+sudo docker build . -f common_dependencies.Dockerfile -t commondocker
+sudo docker build  --no-cache . -f deploy_service.Dockerfile -t deploydocker
+sudo docker build  --no-cache . -f schedule_service.Dockerfile -t scheduledocker
+
+
+sudo docker run -t -p 49005:8005 -v /home/vatsal/nfs/:/deploy_service/nfs/ -v /etc/localtime:/etc/localtime:ro deploydocker
+
+sudo docker run -t -p 49000:8009 -v /home/vatsal/nfs/:/schedule_service/nfs/ -v /etc/localtime:/etc/localtime:ro scheduledocker
+
+sudo docker run -t --net=host -v /home/vatsal/nfs/:/deploy_service/nfs/ -v /etc/localtime:/etc/localtime:ro deploydocker
+
+sudo docker run -t --net=host -v /home/vatsal/nfs/:/schedule_service/nfs/ -v /etc/localtime:/etc/localtime:ro scheduledocker
+
+python3 server_stats.py
+
+python3 request_manager.py
+
+sudo apt update
+sudo apt install nfs-common
+sudo mkdir -p /nfs/general
+sudo mount 10.42.0.238:/nfs/general /nfs/general
+
+sudo ps -ef | grep "keyword to search"
+sudo kill pid
+
+sudo ps -ef | grep "request_manager" | grep -v grep | awk '{print $2}' | sudo xargs kill -9
+
+pip3 install flask-mysql
+pip3 install numpy
+
+******* NFS *******
+sudo apt update
+sudo apt install nfs-common
+
+sudo mkdir -p /home/vatsal/nfs
+sudo mount 10.42.0.1:6009/home/vatsal/nfs/ /home/dhawal/nfs/
+sudo ufw disable
+
+pip3 install xmltodict
+
+
+##################################################################################
+NFS
+
+Steps
+
+Server side
+
+In home
+
+sudo apt update
+sudo apt install nfs-kernel-server
+sudo mkdir /var/nfs/general -p
+ls -la /var/nfs/general
+sudo chown nobody:nogroup /var/nfs/general
+sudo vi /etc/exports (write following line: /var/nfs/general    10.42.0.*(rw,sync,no_subtree_check) )
+/home       10.42.0.*(rw,sync,no_root_squash,no_subtree_check)
+sudo systemctl restart nfs-kernel-server
+sudo ufw status
+sudo ufw allow from 10.42.0.238(shared) to any port nfs
+sudo ufw status
+
+
+Client side
+
+
+sudo apt update
+sudo apt install nfs-common
+
+sudo mkdir -p /home/vatsal/nfs
+sudo mount 10.42.0.1:6009/home/vatsal/nfs/ /home/dhawal/nfs/
+sudo ufw disable
+df -h
+
+
+#####UFW####
+
+sudo ufw enable
+sudo ufw status
+sudo ufw allow port/service
+sudo ufw disable
+
+###############################################################################################

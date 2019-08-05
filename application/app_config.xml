@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<main>
+    <configuration>
+        <dbConnectionString>localhost:3307</dbConnectionString>
+        <url>http://192.168.43.54:5003</url>
+    </configuration>
+
+    <models>
+        <scheduling>
+            <model>
+                <model-name>animalWelfare</model-name>
+                <start-time> NA </start-time>
+                <end-time> NA </end-time>
+                <repeat> no </repeat>
+                <interval> 45 </interval>
+                <count> 4 </count>
+                <repeat-period>47</repeat-period>
+                <indefinately>no</indefinately>
+                <gateway-loc>Gateway</gateway-loc>
+                <uname>rushit</uname>
+                <password>jasani123</password>
+                <socket>192.168.43.115:8902</socket>
+            </model>
+        </scheduling>
+    </models>
+
+    <services>
+        <service>
+            <serviceName>faunaCounterService</serviceName>
+            <minInstances>1</minInstances>
+            <minResponseTime>100ms</minResponseTime>
+            <highMark>50</highMark>
+            <lowMark>10</lowMark>
+            <maxInstances>1</maxInstances>
+        </service>
+    </services>
+</main>

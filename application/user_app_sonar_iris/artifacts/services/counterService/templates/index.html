@@ -1,0 +1,33 @@
+ <!DOCTYPE html>
+<html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script>
+  	function reloadp()
+  	{
+	  	 var data
+	  	 console.log("functioncalled")
+	  	 alert("hello")
+	  	 $.get("/get_counter_data", function(data, status){
+	  	 	data = JSON.parse(data)
+	  	 	alert(data["count"])
+	  	 	$("#countId").text(data["count"])
+		});
+	}
+	   window.onload=reloadp
+	  </script>
+
+</head>
+
+<body>
+	 <div id="myDiv">
+	  	<span >Counter Value : </span>
+	  	<!-- <span> Hello</span> -->
+	  	<span id="countId" ></span>
+	  </div>
+	
+	 
+
+</body>
+</html> 

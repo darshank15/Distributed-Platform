@@ -1,0 +1,46 @@
+ <!DOCTYPE html>
+<html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script>
+  	function reloadp()
+  	{
+	  	 var data
+	  	 // console.log("functioncalled")
+	  	 // alert("hello")
+	  	 $.get("/get_command_data", function(data, status){
+	  	 	data = JSON.parse(data)
+	  	 	alert(data["count"])
+	  	 	$("#countId").text(data["count"])
+		});
+	}
+	   window.onload=reloadp
+	  </script>
+
+</head>
+
+
+
+<body>
+	 <form action="/push_data_to_RMQ" method="post" enctype=multipart/form-data>
+                
+          <label> Command </label> 
+          <input type="text" name="command">
+          <br />
+          <button type="submit" class="btn btn-primary mb-2">submit</button>
+        </form>
+
+	 <div id="myDiv">
+	  	<span >Output : </span>
+	  	<!-- <span> Hello</span> -->
+	  	<span id="countId" ></span>
+	  </div>
+
+</head>
+	 
+
+</body>
+</html> 

@@ -1,0 +1,2 @@
+echo $4 | sudo -S docker load < scheduledocker.tar
+echo $4 | sudo -S docker run -t --net=host -v ~/nfs/:/schedule_service/nfs/ -v /etc/localtime:/etc/localtime:ro scheduledocker python3 schedule_service.py $1 $2 $3 $4

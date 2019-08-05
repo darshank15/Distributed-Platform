@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    
+<main>
+<sensors>
+    <sensor>
+        <sensorType>DISTANCE</sensorType>
+        <sensorLocation>Vizag</sensorLocation>
+    </sensor>
+    <sensor>
+        <sensorType>SONAR</sensorType>
+        <sensorLocation>Kerala</sensorLocation>
+    </sensor>
+    <sensor>
+        <sensorType>IRIS</sensorType>
+        <sensorLocation>Goa</sensorLocation>
+    </sensor>
+</sensors>
+
+<gateways>
+    <gateway>
+        <name>Submarine1</name>
+        <gatewayIP>192.168.43.149</gatewayIP>
+        <gatewayLocation>Vizag</gatewayLocation>
+        <gatewayUname>priyendu</gatewayUname>
+        <gatewayPassword>dontmesswithme</gatewayPassword>
+        <dependencies>
+            <sensor-dependency>
+                <sensor-type>Sonar</sensor-type>
+            </sensor-dependency>
+        </dependencies>
+    </gateway>
+    <gateway>
+        <name>Submarine2</name>
+        <gatewayIP>192.168.43.110</gatewayIP>
+        <gatewayLocation>London</gatewayLocation>
+        <gatewayUname>dhawal</gatewayUname>
+        <gatewayPassword>dhawal@A1</gatewayPassword>
+        <dependencies>
+            <sensor-dependency>
+                <sensor-type>IRIS</sensor-type>
+            </sensor-dependency>
+        </dependencies>
+    </gateway>
+     <gateway>
+        <name>Submarine3</name>
+        <gatewayIP>192.168.43.125</gatewayIP>
+        <gatewayLocation>London</gatewayLocation>
+        <gatewayUname>vatsal</gatewayUname>
+        <gatewayPassword>vatsal_laptop</gatewayPassword>
+        <dependencies>
+            <sensor-dependency>
+                <sensor-type>DISTANCE</sensor-type>
+            </sensor-dependency>
+        </dependencies>
+    </gateway>
+    <gateway>
+        <name>Submarine4</name>
+        <gatewayIP>192.168.43.115</gatewayIP>
+        <gatewayLocation>NewYork</gatewayLocation>
+        <gatewayUname>rushit</gatewayUname>
+        <gatewayPassword>jasani123</gatewayPassword>
+    </gateway>
+</gateways>
+
+<models>
+    <model>
+        <modelName>iris</modelName>
+        <predURLStructure>v1/models/iris/versions/1</predURLStructure>
+        <fileName>iris.pb</fileName>
+        <type>shared</type>
+        <dependencies>
+            <sensor-type>IRIS</sensor-type>
+            <sensor-type>SONAR</sensor-type>
+            <sensor-type>DISTANCE</sensor-type>
+        </dependencies>
+    </model>
+    <model>
+        <modelName>Sonar</modelName>
+        <predURLStructure>v1/models/Sonar/versions/1</predURLStructure>
+        <fileName>Sonar.pb</fileName>
+        <type>exclusive</type>
+        <dependencies>
+            <sensor-type>SONAR</sensor-type>
+            <sensor-type>IRIS</sensor-type>
+            <sensor-type>DISTANCE</sensor-type>
+        </dependencies>
+    </model>
+</models>
+
+<services>
+    <service>
+        <serviceName>twowaySensorService</serviceName>
+        <startUPFile>twowaySensorService.py</startUPFile>
+        <type>shared</type>
+        <dependencies>
+            <sensor-dependency>
+                <sensor-type>DISTANCE</sensor-type>
+            </sensor-dependency>
+        </dependencies>
+    </service>
+	<service>
+        <serviceName>notificationService</serviceName>
+        <startUPFile>notificationService.py</startUPFile>
+        <type>shared</type>
+    </service>
+    <service>
+        <serviceName>distanceAlarmService</serviceName>
+        <startUPFile>distanceAlarmService.py</startUPFile>
+        <type>shared</type>
+        <dependencies>
+            <service-dependency>
+                <service-name>notificationService</service-name>
+            </service-dependency>
+            <sensor-dependency>
+            	<sensor-type>DISTANCE</sensor-type>
+            </sensor-dependency>
+        </dependencies>
+    </service>
+     <service>
+        <serviceName>counterService</serviceName>
+        <startUPFile>counterService.py</startUPFile>
+        <type>shared</type>
+        <dependencies>
+            <model-dependency>
+                <model-name>Sonar</model-name>
+            </model-dependency>
+            <sensor-dependency>
+            	<sensor-type>SONAR</sensor-type>
+            </sensor-dependency>
+        </dependencies>
+    </service>
+     <service>
+        <serviceName>helperService</serviceName>
+        <startUPFile>helperService.py</startUPFile>
+        <type>exclusive</type>
+        <dependencies>
+        	<sensor-dependency>
+            	<sensor-type>IRIS</sensor-type>
+            </sensor-dependency>
+            <model-dependency>
+                <model-name>iris</model-name>
+            </model-dependency>
+        </dependencies>
+    </service>
+</services>
+</main>

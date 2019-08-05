@@ -1,0 +1,1 @@
+python3 faunaCounterService.py $1 $2

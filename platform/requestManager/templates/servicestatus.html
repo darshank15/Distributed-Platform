@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Inference</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    .table{
+      width: 0%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;}
+    }
+  </style>
+  <script type="text/javascript">
+    function fun(obj)
+    {
+      // alert(obj.getAttribute("name"));
+      attr = obj.getAttribute("name");
+      type_ = attr.substr(0,4);
+      // alert(type_)
+      attr = attr.substr(5,);
+      // alert(attr)
+      // alert(attr)
+      if(type_ == "star")
+      {
+        document.getElementById("type1").value="start"
+      }
+      else if(type_ == "stop")
+      {
+        document.getElementById("type1").value="stop"
+      }
+      else
+      {
+        document.getElementById("type1").value="display"
+      }
+      document.getElementById("sname1").value=attr
+      document.form1.submit()
+    }
+  </script>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h3>AI Platform </h3>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="/">Home</a></li>
+          <li><a href="/deployWebApp">Deploy WebApp</a></li>
+          <li><a href="/signup">Signup</a></li>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/schedule_model">Schedule Model</a></li>
+          <li><a href="/model_status">Model Status</a></li>
+          <li class="active"><a href="/Service_status">Service Status</a></li>
+          <li><a href="/platform">Start Platform</a></li>
+          <li><a href="/logout">Logout</a></li>
+      </ul><br>
+      <!-- <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search Blog..">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div> -->
+    </div>
+      <div class="container" id="cont">
+    <h4>Service Details and Start Stop </h4>        
+    <form action="/start_stop_service" method="post" name="form1" enctype="multipart/form-data">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Service Name</th>
+          <th>Service Status</th>
+          <th>Start Service</th>
+          <th>Stop Service</th>
+          <th>Config</th>
+          <th>Display</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in data %}
+        <tr>
+          <td>
+            {{i[1]}}
+          </td>
+          <td>
+            {% if i[1] in path.keys() %}
+            YES
+            {% else %}
+            NO
+            {% endif %}
+            <input type="hidden" name="sname" id="sname1"/>
+            <input type="hidden" name="type" id="type1"/>
+          </td>
+          <td>
+            <button type="button" class="btn btn-primary mb-2" name="star_{{i[1]}}" onclick="fun(this)">Start
+            </button>
+            
+          </td>
+          <td>
+             <button type="button" class="btn btn-primary mb-2" name="stop_{{i[1]}}" onclick="fun(this)">Stop
+             </button>
+          </td>
+         
+          <td>
+            <input type="file" class="form-control-file" id="config_{{i[1]}}" name="{{i[1]}}">
+          </td>
+          {% if i[1] in path.keys() %}
+              <td>
+             <a href="http://{{path[i[1]]}}" target="blank" class="btn btn-primary mb-2">Display</a>
+          </td> 
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </form>
+  </div>
+              
+   <!--  <div class="col-sm-9">
+      <h4>Model and Scheduling Details</h4>
+      
+        <form action="/start_stop_service" method="post" name="form1">
+                
+          {% for i in data %}
+          {{i[1]}}
+          {{i[9]}}
+          <button type="button" class="btn btn-primary mb-2" name="star_{{i[1]}}" onclick="fun(this)">Start</button>
+          <input type="hidden" name="sname" id="sname1"/>
+          <input type="hidden" name="type" id="type1"/>
+           <button type="button" class="btn btn-primary mb-2" name="stop_{{i[1]}}" onclick="fun(this)">Stop</button>
+          <br />
+          {% endfor %}
+        </form>
+
+    </div> -->
+  </div>
+</div>
+
+<footer class="container-fluid">
+  <p>Footer Text</p>
+</footer>
+
+</body>
+</html>
