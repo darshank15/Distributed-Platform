@@ -1,0 +1,47 @@
+sudo docker rmi $(sudo docker images -f "dangling=true" -q) (Remove all images with none name and tag)
+
+sudo docker exec -it container_name /bin/bash  (interactive docker)
+
+sudo docker run -p system_port:docker_port -v systemdir:dockerdir imageName (-v for volume share)
+
+sudo docker run -t -p system_port:docker_port -v systemdir:dockerdir imageName (print visible for -t)
+
+sudo docker save imageName > imageName.tar
+
+sudo docker load < imageName.tar
+
+sudo docker build Dockerfile
+
+sudo docker build . -f mydockerfilename.Dockerfile
+
+sudo docker build -t imageName dirName(you want to build)
+
+sudo docker images
+
+sudo docker rmi imagename
+
+sudo docker rm containerId
+
+sudo docker run imageName
+
+sudo docker run -it imageName bash (For interactive run)
+
+sudo docker ps -a
+
+sudo docker ps -l
+
+sudo docker ps
+
+sudo docker login (login to dockerHub for downloading images)
+
+sudo docker pull imageName
+
+sudo docker start containerId
+
+sudo docker stop containerId
+
+sudo docker stop $(sudo docker ps -aq) (Stop all docker container)
+
+sudo docker rm $(sudo docker ps -aq) (remove all docker containers)
+
+sudo docker rmi $(sudo docker ps -aq) (remove all docker images)
